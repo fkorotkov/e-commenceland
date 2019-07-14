@@ -1,0 +1,14 @@
+container:
+  image: node:latest
+  
+task:
+  name: Test
+  node_modules_cache:
+    folder: node_modules
+    fingerprint_script: cat yarn.lock
+    populate_script: yarn install
+  install_codecov_script: npm install -g codecov
+  test_script: npm test
+  coverage_script: npm run test:coverage
+  build_script: npm run build
+  codecov_script: codecov
